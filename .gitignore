@@ -1,4 +1,12 @@
 **/target
 **/.env
 **/.vscode
-.recycle_bin
+**/.recycle_bin
+**/.idea
+**/*.iws
+**/*.iml
+**/*.ipr
+**/.classpath
+**/.factorypath
+**/.project
+**/.settings

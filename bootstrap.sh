@@ -26,8 +26,10 @@ cd scripts
 mkdir database
 mkdir rest-calls
 cd ..
-cd src/main
-echo spring.application.name=$PROJECT_NAME >> resources/application.properties
+cd src/main/resources
+echo spring.application.name=$PROJECT_NAME >> application.properties
+echo >> application.yml
+cd ..
 cd java/*/*/*
 mkdir config
 mkdir controller
@@ -48,7 +50,15 @@ git init
 echo **/target >> .gitignore
 echo **/.env >> .gitignore
 echo **/.vscode >> .gitignore
-echo .recycle_bin >> .gitignore
+echo **/.recycle_bin >> .gitignore
+echo **/.idea >> .gitignore
+echo **/*.iws >> .gitignore
+echo **/*.iml >> .gitignore
+echo **/*.ipr >> .gitignore
+echo **/.classpath >> .gitignore
+echo **/.factorypath >> .gitignore
+echo **/.project >> .gitignore
+echo **/.settings >> .gitignore
 echo "# App" >> README.md
 git add .
 git commit -m "initial commit"
