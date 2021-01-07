@@ -11,4 +11,4 @@ content-type: application/json
 }
 
 ###
-GET {{api}}/1 HTTP/1.1
+GET {{api}}/2 HTTP/1.1
