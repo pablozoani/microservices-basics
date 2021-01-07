@@ -89,7 +89,7 @@ spring init \
     --name $PROJECT_NAME \
     --groupId $GROUP_ID \
     --artifactId $PROJECT_NAME \
-    --dependencies=cloud-gateway,cloud-eureka,actuator,devtools \
+    --dependencies=cloud-gateway,cloud-resilience4j,cloud-eureka,actuator,devtools \
     $PROJECT_NAME
 cd $PROJECT_NAME
 echo "FROM openjdk:11" >> Dockerfile
