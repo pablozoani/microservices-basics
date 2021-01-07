@@ -1,6 +1,7 @@
 #!/bin/bash
 
 
+
 ### department-service
 ROOT_DIR=$(pwd)
 GROUP_ID=com.pzoani
@@ -14,7 +15,7 @@ spring init \
     --name $PROJECT_NAME \
     --groupId $GROUP_ID \
     --artifactId $PROJECT_NAME \
-    --dependencies=web,data-jpa,h2,lombok,actuator,devtools \
+    --dependencies=web,data-jpa,h2,lombok,actuator,devtools,cloud-eureka \
     $PROJECT_NAME
 cd $PROJECT_NAME
 echo "FROM openjdk:11" >> Dockerfile
@@ -35,6 +36,7 @@ mkdir model
 mkdir repository
 mkdir service
 cd "$ROOT_DIR"
+
 
 
 ### user-service
@@ -50,9 +52,8 @@ spring init \
     --name $PROJECT_NAME \
     --groupId $GROUP_ID \
     --artifactId $PROJECT_NAME \
-    --dependencies=web,data-jpa,h2,lombok,actuator,devtools \
+    --dependencies=web,data-jpa,h2,lombok,actuator,devtools,cloud-eureka \
     $PROJECT_NAME
-
 cd $PROJECT_NAME
 echo "FROM openjdk:11" >> Dockerfile
 echo src >> .dockerignore
@@ -74,10 +75,62 @@ mkdir service
 cd "$ROOT_DIR"
 
 
+
+### api-gateway
+ROOT_DIR=$(pwd)
+GROUP_ID=com.pzoani
+PROJECT_NAME=api-gateway
+spring init \
+    --boot-version=2.4.1 \
+    --language=java \
+    --java-version=11 \
+    --build=maven \
+    --packaging=jar \
+    --name $PROJECT_NAME \
+    --groupId $GROUP_ID \
+    --artifactId $PROJECT_NAME \
+    --dependencies=cloud-gateway,cloud-eureka,actuator,devtools \
+    $PROJECT_NAME
+cd $PROJECT_NAME
+echo "FROM openjdk:11" >> Dockerfile
+echo src >> .dockerignore
+cd src/main/resources
+echo spring.application.name=$PROJECT_NAME >> application.properties
+echo >> application.yml
+cd "$ROOT_DIR"
+
+
+
+### service-registry
+ROOT_DIR=$(pwd)
+GROUP_ID=com.pzoani
+PROJECT_NAME=service-registry
+spring init \
+    --boot-version=2.4.1 \
+    --language=java \
+    --java-version=11 \
+    --build=maven \
+    --packaging=jar \
+    --name $PROJECT_NAME \
+    --groupId $GROUP_ID \
+    --artifactId $PROJECT_NAME \
+    --dependencies=cloud-eureka-server,actuator,devtools \
+    $PROJECT_NAME
+cd $PROJECT_NAME
+echo "FROM openjdk:11" >> Dockerfile
+echo src >> .dockerignore
+cd src/main/resources
+echo spring.application.name=$PROJECT_NAME >> application.properties
+echo >> application.yml
+cd "$ROOT_DIR"
+
+
+
 ### DIR STRUCT
 mkdir .recycle_bin
 echo 'version: "3.9"' >> docker-compose.yml
 echo >> .env
+
 
 
 ### GIT
@@ -99,6 +152,7 @@ git add .
 git commit -m "initial commit"
 git branch develop
 git checkout develop
+
 
 
 ls -al

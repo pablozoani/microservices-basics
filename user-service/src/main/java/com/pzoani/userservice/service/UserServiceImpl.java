@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findById(id)
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
         DepartmentDTO departmentDTO = restTemplate
-            .getForObject("http://localhost:9001/" + user.getDepartmentId(), DepartmentDTO.class);
+            .getForObject("http://department-service/departments/" + user.getDepartmentId(), DepartmentDTO.class);
         return new UserWithDepartmentDTO(user, departmentDTO);
     }
 }
