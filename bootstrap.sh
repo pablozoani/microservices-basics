@@ -15,7 +15,7 @@ spring init \
     --name $PROJECT_NAME \
     --groupId $GROUP_ID \
     --artifactId $PROJECT_NAME \
-    --dependencies=web,data-jpa,h2,lombok,actuator,devtools,cloud-eureka \
+    --dependencies=web,data-jpa,h2,lombok,actuator,devtools,cloud-eureka,cloud-config-client \
     $PROJECT_NAME
 cd $PROJECT_NAME
 echo "FROM openjdk:11" >> Dockerfile
@@ -53,7 +53,7 @@ spring init \
     --name $PROJECT_NAME \
     --groupId $GROUP_ID \
     --artifactId $PROJECT_NAME \
-    --dependencies=web,data-jpa,h2,lombok,actuator,devtools,cloud-eureka \
+    --dependencies=web,data-jpa,h2,lombok,actuator,devtools,cloud-eureka,cloud-config-client \
     $PROJECT_NAME
 cd $PROJECT_NAME
 echo "FROM openjdk:11" >> Dockerfile
@@ -91,7 +91,7 @@ spring init \
     --name $PROJECT_NAME \
     --groupId $GROUP_ID \
     --artifactId $PROJECT_NAME \
-    --dependencies=cloud-gateway,cloud-resilience4j,cloud-eureka,actuator,devtools \
+    --dependencies=cloud-gateway,cloud-resilience4j,cloud-eureka,actuator,devtools,cloud-config-client \
     $PROJECT_NAME
 cd $PROJECT_NAME
 echo "FROM openjdk:11" >> Dockerfile
