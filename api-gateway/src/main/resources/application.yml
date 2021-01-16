@@ -1,6 +1,5 @@
 server:
   port: 9191
-spring:
   cloud:
     gateway:
       enabled: true
@@ -13,4 +12,3 @@ spring:
         uri: lb://DEPARTMENT-SERVICE
         predicates:
         - Path=/departments/**
-          

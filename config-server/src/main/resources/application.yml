@@ -9,4 +9,3 @@ spring:
           clone-on-start: true
           password: ${GITHUB_PASSWORD:default}
           username: pablozoani@hotmail.com
-
